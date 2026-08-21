@@ -1,10 +1,7 @@
-import { useMemo, useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
-import { Outlet } from 'react-router-dom';
-
+import { useMemo, useState } from 'react';
 import { AuthContext, createAuthValue, type UserRole } from './features/auth/context/AuthContext';
-import { useOfflineQueue } from './hooks/useOfflineQueue';
 import Layout from './components/Layout';
+import { Outlet } from 'react-router-dom';
 
 export default function App() {
   const [role, setSelectedRole] = useState<UserRole>('Doctor');
