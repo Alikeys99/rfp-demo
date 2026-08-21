@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../features/auth/context/AuthContext';
 import { useOfflineQueue } from '../hooks/useOfflineQueue';
 import { useSyncStatus } from '../hooks/useSyncStatus';
 import SyncQueuePanel from '../features/offline/SyncQueuePanel';

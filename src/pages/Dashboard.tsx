@@ -1,16 +1,18 @@
-import { useMemo, useState, useCallback } from 'react';
-import { useContext } from 'react';
+import { useContext, useCallback } from 'react';
 import { AuthContext } from '../features/auth/context/AuthContext';
 import { useOfflineQueue } from '../hooks/useOfflineQueue';
 import PatientWidget from '../features/dashboard/PatientWidget';
 import { USER_ROLES } from '../constants/mockData';
 import '../styles/dashboard.css';
 
-export default function Dashboard() {
-  const context = useContext(AuthContext);
-  if (!context) throw new Error('Dashboard must be used within AuthContext.Provider');
+export default function HomePage() {
+  const authContext = useContext(AuthContext);
+  
+  if (!authContext) {
+    return <div>Error: Auth context not available</div>;
+  }
 
-  const { role, permissions } = context;
+  const { role, permissions, setRole } = authContext;
   const { savePatientOffline } = useOfflineQueue();
 
   const hasAccess = useCallback(
@@ -37,7 +39,7 @@ export default function Dashboard() {
               <button
                 key={option}
                 className={`role-chip ${role === option ? 'active' : ''}`}
-                onClick={() => context.setRole(option)}
+                onClick={() => setRole(option)}
               >
                 {option}
               </button>

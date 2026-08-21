@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import { AuthContext, createAuthValue, type UserRole } from './features/auth/context/AuthContext';
 import Layout from './components/Layout';
-import { Outlet } from 'react-router-dom';
 
 export default function App() {
   const [role, setSelectedRole] = useState<UserRole>('Doctor');
